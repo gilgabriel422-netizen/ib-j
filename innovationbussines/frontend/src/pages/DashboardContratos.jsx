@@ -59,13 +59,14 @@ export default function DashboardContratos() {
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-12 gap-6">
         {/* Sidebar */}
         <aside className="col-span-3 bg-yellow-100 rounded-lg p-4 shadow">
-          <h2 className="text-xl font-bold mb-4">Menú - Contratos</h2>
+          <h2 className="text-xl font-bold mb-4">Menú</h2>
           <ul className="space-y-2 text-sm">
-            <li className="py-2 px-3 bg-yellow-200 rounded">Contratos</li>
-            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => { setShowAdminPanel(true); setAdminInitialSection('reservas') }}>Reservas</li>
-            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={handleGoToBeneficios}>Beneficios</li>
+            <li className="py-2 px-3 bg-yellow-200 rounded cursor-pointer hover:bg-yellow-300">Contratos</li>
+            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => window.location.href = '/reservas'}>Reservas</li>
+            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => window.location.href = '/beneficios'}>Beneficios</li>
             <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => window.location.href = '/contratos-fisicos'}>Contratos Físicos</li>
-            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => window.location.href = '/dashboard-atencion'}>Enviar a Atención</li>
+            <li className="py-2 px-3 rounded hover:bg-yellow-200 cursor-pointer" onClick={() => window.location.href = '/enviar-atencion'}>Enviar a Atención</li>
+            <li className="py-2 px-3 rounded hover:bg-red-200 cursor-pointer text-red-700 font-semibold" onClick={logout}>Salir</li>
           </ul>
         </aside>
 
@@ -80,7 +81,6 @@ export default function DashboardContratos() {
                 <div className="flex gap-2">
                   <button className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-yellow-700 rounded text-black" onClick={() => setShowNewContractModal(true)}>Nuevo Contrato</button>
                   <button className="px-4 py-2 border rounded" onClick={() => window.location.reload()}>Actualizar</button>
-                  <button className="px-4 py-2 border rounded text-red-700 hover:bg-red-50" onClick={logout}>Salir</button>
                 </div>
               </div>
             </>
@@ -93,21 +93,6 @@ export default function DashboardContratos() {
                 <li key={c.id} className="py-2 border-b">{c.first_name} {c.last_name} — {c.contract_number} — {c.email}</li>
               ))}
             </ul>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white p-4 rounded shadow">
-              <h4 className="font-semibold mb-2">Reservas</h4>
-              <Packages />
-            </div>
-            <div className="bg-white p-4 rounded shadow" ref={beneficiosRef}>
-              <h4 className="font-semibold mb-2">Beneficios</h4>
-              <ul>
-                {clients.map(c => (
-                  <li key={c.id} className="py-1 border-b">{c.first_name} {c.last_name}: Años: {c.años || 0} — Noches: {c.remaining_nights || 0}</li>
-                ))}
-              </ul>
-            </div>
           </div>
         </main>
       </div>

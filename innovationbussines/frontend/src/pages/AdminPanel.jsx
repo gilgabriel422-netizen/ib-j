@@ -38,6 +38,7 @@ import SessionWarning from '../components/SessionWarning'
 import FeaturedPackages from '../components/FeaturedPackages'
 import LocacionesDepartamentosAdmin from '../components/LocacionesDepartamentosAdmin'
 import PaquetesAdmin from '../components/PaquetesAdmin'
+import NotificationBell from '../components/NotificationBell'
 
 // Importar script de diagnóstico
 import '../debug-auth'
@@ -3920,6 +3921,7 @@ const AdminPanel = ({ initialSection, panelTitle = 'Admin Panel' }) => {
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-900">Dashboard Ejecutivo - Sumatorias del Período</h2>
               <div className="flex items-center space-x-4">
+                <NotificationBell />
                 <label className="text-sm font-medium text-gray-700 dashboard-period-text">Período:</label>
                 <select
                   value={dashboardPeriod}

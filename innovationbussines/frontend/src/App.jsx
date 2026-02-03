@@ -9,6 +9,9 @@ const SoportePanel = lazy(() => import('./pages/SoportePanel.jsx'));
 const ContratosFisicosPanel = lazy(() => import('./pages/ContratosFisicosPanel.jsx'));
 const AyudaCliente = lazy(() => import('./pages/AyudaCliente.jsx'));
 const SoportePage = lazy(() => import('./pages/SoportePAge.jsx'));
+const Reservas = lazy(() => import('./pages/Reservas.jsx'));
+const Beneficios = lazy(() => import('./pages/Beneficios.jsx'));
+const EnviarAtencion = lazy(() => import('./pages/EnviarAtencion.jsx'));
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -122,6 +125,9 @@ function App() {
             {/* Removed /admin intermediate redirect route - dashboards accessed directly after login */}
             {/* /dashboard-cobranzas removed; cobranzas users are redirected to /admin */}
             <Route path="/dashboard-contratos" element={<Suspense fallback={<div>Cargando...</div>}><DashboardContratos /><WhatsAppFloat /></Suspense>} />
+            <Route path="/reservas" element={<Suspense fallback={<div>Cargando...</div>}><Reservas /><WhatsAppFloat /></Suspense>} />
+            <Route path="/beneficios" element={<Suspense fallback={<div>Cargando...</div>}><Beneficios /><WhatsAppFloat /></Suspense>} />
+            <Route path="/enviar-atencion" element={<Suspense fallback={<div>Cargando...</div>}><EnviarAtencion /><WhatsAppFloat /></Suspense>} />
             <Route path="/dashboard-cobranzas" element={<ProtectedRoute><Suspense fallback={<div>Cargando...</div>}><CobranzasPanelModified /><WhatsAppFloat /></Suspense></ProtectedRoute>} />
             <Route path="/dashboard-atencion" element={<ProtectedRoute><Suspense fallback={<div>Cargando...</div>}><DashboardAtencionCliente /><WhatsAppFloat /></Suspense></ProtectedRoute>} />
             <Route path="/dashboard-postventa" element={<ProtectedRoute><Suspense fallback={<div>Cargando...</div>}><DashboardPostventa /><WhatsAppFloat /></Suspense></ProtectedRoute>} />
